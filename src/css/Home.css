@@ -1,0 +1,129 @@
+.homeFrame {
+    width: 360px;
+    height: 1047px;
+    background: #9E2A2A;
+    margin: auto auto;
+    padding: 43px 48px !important;
+}
+
+.titlePage {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 39px;
+    display: flex;
+    align-items: flex-end;
+    letter-spacing: 0.01em;
+
+    margin: 0px 0px 15px auto;
+
+    color: #FFFFFF;
+}
+
+.OutletBoxFrame {
+    width: 264px;
+    height: 124px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 12px;
+    margin: 24px 0;
+}
+
+.ImageOutlet {
+    width: 264px;
+    height: 124px;
+    background: url(../images/Outlet/Ijen.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 12px;
+}
+
+.Transparan {
+    width: 264px;
+    height: 124px;
+    background-color: black;
+    position: absolute;
+    border-radius: 12px;
+    opacity: 50%;
+    z-index: 0;
+}
+
+.TextOpenMenu {
+    width: 47px;
+    height: 12px;
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 8px !important;
+    line-height: 12px;
+    /* identical to box height */
+
+    display: flex;
+    align-items: center;
+
+    color: #AB1A24;
+
+    /* flex: none;
+    order: 0;
+    flex-grow: 0; */
+}
+
+.ButtonOpenMenu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 2px 8px;
+    gap: 10px;
+
+    position: absolute;
+    width: 63px;
+    height: 16px;
+    left: 170px;
+    top: 90px;
+
+    background: #FFFFFF;
+    border-radius: 4px;
+    z-index: 1;
+}
+
+.TittleCompany {
+    position: absolute;
+    width: 72px;
+    height: 15px;
+    left: 12px;
+    top: 12px;
+    margin: 0;
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 275;
+    font-size: 10px;
+    line-height: 15px;
+    /* identical to box height */
+
+
+    color: #FFFFFF;
+}
+
+.TittleOutlet {
+    position: absolute;
+    width: 39px;
+    height: 27px;
+    left: 12px;
+    top: 21px;
+    margin: 0;
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 27px;
+    /* identical to box height */
+
+    display: flex;
+    align-items: center;
+
+    color: #FFFFFF;
+}

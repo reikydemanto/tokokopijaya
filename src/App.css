@@ -1,5 +1,39 @@
 .App {
   text-align: center;
+  background-color: #9E2A2A;
+  height: 100vh;
+}
+
+/* .gambar {
+  position: absolute;
+  width: 297px;
+  height: 228px;
+  left: 63px;
+  top: 242px;
+
+  background: url(../src/images/Asset\ 1.png);
+} */
+
+.App h2 {
+  margin-block-start: 0;
+  margin-block-end: 0;
+
+  position: absolute;
+  width: 229px;
+  height: 34px;
+  left: 48px;
+  top: 43px;
+
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 39px;
+  display: flex;
+  align-items: flex-end;
+  letter-spacing: -0.01em;
+
+  color: #FFFFFF;
 }
 
 .App-logo {
@@ -14,7 +48,6 @@
 }
 
 .App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -32,6 +65,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
