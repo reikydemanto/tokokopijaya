@@ -38,16 +38,6 @@
     border-radius: 12px;
 }
 
-.Transparan {
-    width: 264px;
-    height: 124px;
-    background-color: black;
-    position: absolute;
-    border-radius: 12px;
-    opacity: 50%;
-    z-index: 0;
-}
-
 .TextOpenMenu {
     width: 47px;
     height: 12px;
