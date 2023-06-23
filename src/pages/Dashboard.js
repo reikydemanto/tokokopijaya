@@ -3,6 +3,7 @@ import OutletCard from "../components/OutletCard";
 import "../css/Dashboard.css";
 import axios from "axios";
 import background from "../images/bg-instagram.png";
+import kirin from "../images/Asset_1.png";
 
 const Dashboard = () => {
   const baseUrl = "http://localhost:3001/";
@@ -20,7 +21,10 @@ const Dashboard = () => {
       <div className="backgroundColor">
         <div className="container">
           <div className="row justify-content-center">
-            <div className="col-lg-4 backgroundColor shadow">
+            <div
+              className="col-lg-4 backgroundColor shadow"
+              style={{ position: "relative" }}
+            >
               <h2 className="my-4 me-4 Pop-SemiBold text-light">
                 TOKO KOPI JAYA
               </h2>
@@ -32,6 +36,14 @@ const Dashboard = () => {
                   gambar={item.GAMBAR}
                 />
               ))}
+              <div
+                className="image-kirin-kanan"
+                style={{ backgroundImage: `url(${kirin})` }}
+              ></div>
+              <div
+                className="image-kirin-kiri"
+                style={{ backgroundImage: `url(${kirin})` }}
+              ></div>
               <button
                 onClick={() => {
                   window.open("https://wa.me/+6281133332323");

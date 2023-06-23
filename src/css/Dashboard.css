@@ -59,6 +59,37 @@
     color: rgba(255, 255, 255, 0.50);
 }
 
+.indexs {
+    z-index: 1;
+}
+
+.image-kirin-kanan {
+    width: 297px;
+    height: 223px;
+    position: absolute;
+    /* top: 50px;
+    right: 475px; */
+    top: 400px;
+    right: -10px;
+    z-index: 0;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.image-kirin-kiri {
+    width: 297px;
+    height: 223px;
+    position: absolute;
+    /* top: 50px;
+    right: 475px; */
+    top: 1200px;
+    left: -10px;
+    transform: scaleX(-1);
+    z-index: 0;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
 @media (min-width: 320px) {
 
     .button-sosmed {

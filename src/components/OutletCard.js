@@ -2,7 +2,7 @@ import "../css/Dashboard.css";
 const OutletCard = (props) => {
   return (
     <>
-      <div className="card shadow mx-4 mb-4 mb-1 border-0 rd-16">
+      <div className="card shadow mx-4 mb-4 mb-1 border-0 rd-16 indexs">
         <img
           src={require(`../images/Outlet/${props.gambar}`)}
           className="card-img rd-16"
