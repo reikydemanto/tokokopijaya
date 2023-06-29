@@ -1,10 +1,37 @@
 import { useLocation } from "react-router-dom";
 import { Icon } from "@iconify/react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Outlet = () => {
   const location = useLocation();
 
-  const rp = 15000;
+  const baseUrl = `http://localhost:3001/menu/${location.state.nama}`;
+
+  const [menu, setMenu] = useState();
+  const [categories, setCategories] = useState();
+
+  useEffect(() => {
+    if (menu === undefined) {
+      axios.get(baseUrl).then((response) => {
+        setMenu(response);
+      });
+    } else {
+      let getCategories = new Array();
+
+      for (let i = 0; i < menu.data[0].payload.length; i++) {
+        getCategories[i] = menu.data[0].payload[i].NAMA_KATEGORI;
+        setCategories([...new Set(getCategories)]);
+      }
+    }
+  }, [menu]);
+
+  const press = () => {
+    for (let i = 0; i < menu.data[0].payload.length; i++) {
+      let a = menu.data[0].payload[i].NAMA_KATEGORI.includes("Milk Based");
+      console.log(a);
+    }
+  };
 
   return (
     <>
@@ -57,67 +84,41 @@ const Outlet = () => {
                   </div>
                 </div>
               </div>
-              <div className="container-fluid pe-4 ps-0 mb-5">
-                <h3 className="Pop-SemiBold white-font mb-2">Signature</h3>
-                <div className="carousel gap-2">
-                  <div className="item-menu white-font">
-                    <div className="image mb-2">
-                      <img
-                        className="rd-16"
-                        src={require("../images/Menu/kopi_susu_jaya.jpg")}
-                      />
+              {categories ? (
+                categories.map((itemParent, indexParent) => (
+                  <div
+                    className="container-fluid pe-4 ps-0 mb-4"
+                    key={indexParent}
+                  >
+                    <h3 className="Pop-SemiBold white-font mb-2">
+                      {itemParent}
+                    </h3>
+                    <div className="carousel gap-2">
+                      {menu.data[0].payload.map((item, index) =>
+                        item.NAMA_KATEGORI == itemParent ? (
+                          <div className="item-menu white-font" key={index}>
+                            <div className="image mb-2">
+                              <img
+                                className="rd-16"
+                                src={require("../images/Menu/kopi_susu_jaya.jpg")}
+                              />
+                            </div>
+                            <p className="nama-menu text-center Pop-SemiBold mb-0">
+                              {item.NAMA_MENU}
+                            </p>
+                            <p className="harga text-center Pop-Regular mb-0">
+                              Rp {item.HARGA.toLocaleString("id-ID")}
+                            </p>
+                          </div>
+                        ) : null
+                      )}
                     </div>
-                    <p className="nama-menu text-center Pop-SemiBold mb-0">
-                      Kopi Susu Mantap Jaya
-                    </p>
-                    <p className="harga text-center Pop-Regular mb-0">
-                      Rp {rp.toLocaleString("id-ID")}
-                    </p>
                   </div>
-                  <div className="item-menu white-font">
-                    <div className="image mb-2">
-                      <img
-                        className="rd-16"
-                        src={require("../images/Menu/kopi_susu_jaya.jpg")}
-                      />
-                    </div>
-                    <p className="nama-menu text-center Pop-SemiBold mb-0">
-                      Kopi Susu Mantap Jaya
-                    </p>
-                    <p className="harga text-center Pop-Regular mb-0">
-                      Rp {rp.toLocaleString("id-ID")}
-                    </p>
-                  </div>
-                  <div className="item-menu white-font">
-                    <div className="image mb-2">
-                      <img
-                        className="rd-16"
-                        src={require("../images/Menu/kopi_susu_jaya.jpg")}
-                      />
-                    </div>
-                    <p className="nama-menu text-center Pop-SemiBold mb-0">
-                      Kopi Susu Mantap Jaya
-                    </p>
-                    <p className="harga text-center Pop-Regular mb-0">
-                      Rp {rp.toLocaleString("id-ID")}
-                    </p>
-                  </div>
-                  <div className="item-menu white-font">
-                    <div className="image mb-2">
-                      <img
-                        className="rd-16"
-                        src={require("../images/Menu/kopi_susu_jaya.jpg")}
-                      />
-                    </div>
-                    <p className="nama-menu text-center Pop-SemiBold mb-0">
-                      Kopi Susu Mantap Jaya
-                    </p>
-                    <p className="harga text-center Pop-Regular mb-0">
-                      Rp {rp.toLocaleString("id-ID")}
-                    </p>
-                  </div>
-                </div>
-              </div>
+                ))
+              ) : (
+                <h1>KOSONG</h1>
+              )}
+              {/* <button onClick={press}>PRESS</button> */}
             </div>
           </div>
         </div>

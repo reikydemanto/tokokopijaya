@@ -1,26 +1,20 @@
+import LazyLoad from "react-lazy-load";
+
 const CobaGetApi = () => {
   return (
     <>
-      <div className="container mx-auto">
-        <div className="row">
-          <div className="col bg-dark"></div>
-          <div className="col-md-4 p-0">
-            <div className="wrapper">
-              <div className="carousel">
-                <img src="https://placeholder.com/100" />
-                <img src="https://placeholder.com/100" />
-                <img src="https://placeholder.com/100" />
-                <img src="https://placeholder.com/100" />
-                <img src="https://placeholder.com/100" />
-                <img src="https://placeholder.com/100" />
-                <img src="https://placeholder.com/100" />
-                <img src="https://placeholder.com/100" />
-              </div>
-            </div>
-          </div>
-          <div className="col bg-dark"></div>
-        </div>
-      </div>
+      <LazyLoad height={762}>
+        <img src="http://apod.nasa.gov/apod/image/1502/HDR_MVMQ20Feb2015ouellet1024.jpg" />
+      </LazyLoad>
+      <LazyLoad height={762}>
+        <img src="http://apod.nasa.gov/apod/image/1502/HDR_MVMQ20Feb2015ouellet1024.jpg" />
+      </LazyLoad>
+      <LazyLoad height={762}>
+        <img src="http://apod.nasa.gov/apod/image/1502/HDR_MVMQ20Feb2015ouellet1024.jpg" />
+      </LazyLoad>
+      <LazyLoad height={762}>
+        <img src="http://apod.nasa.gov/apod/image/1502/HDR_MVMQ20Feb2015ouellet1024.jpg" />
+      </LazyLoad>
     </>
   );
 };
