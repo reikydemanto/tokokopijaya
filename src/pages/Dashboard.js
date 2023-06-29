@@ -3,7 +3,8 @@ import OutletCard from "../components/OutletCard";
 import "../css/Dashboard.css";
 import axios from "axios";
 import background from "../images/bg-instagram.png";
-import kirin from "../images/Asset_1.png";
+import kirin from "../images/kirin.png";
+import { Icon } from "@iconify/react";
 
 const Dashboard = () => {
   const baseUrl = "http://localhost:3001/";
@@ -14,6 +15,10 @@ const Dashboard = () => {
     axios.get(baseUrl).then((response) => {
       setOutlet(response.data[0].payload);
     });
+    console.log(outlet);
+    return () => {
+      setOutlet([]);
+    };
   }, []);
 
   return (
@@ -51,11 +56,7 @@ const Dashboard = () => {
                 type="button"
                 className="btn btn button-sosmed whatsapp Pop-SemiBold mx-auto mb-4 py-2 shadow"
               >
-                <img
-                  className="button-icon"
-                  src={require("../images/icons-whatsapp.png")}
-                  alt="whatsapp--v1"
-                />
+                <Icon icon="ic:round-whatsapp" width="36" height="36" />
                 <p className="wa-text mb-0">Admin Jaya Group</p>
               </button>
               <button
@@ -66,11 +67,7 @@ const Dashboard = () => {
                 className="btn btn button-sosmed instagram Pop-SemiBold mx-auto mb-5 py-2 shadow"
                 style={{ backgroundImage: `url(${background})` }}
               >
-                <img
-                  className="button-icon"
-                  src={require("../images/icons-instagram.png")}
-                  alt="whatsapp--v1"
-                />
+                <Icon icon="mdi:instagram" width="36" height="36" />
                 <p className="wa-text mb-0">Admin Jaya Group</p>
               </button>
               <div className="footer my-5">

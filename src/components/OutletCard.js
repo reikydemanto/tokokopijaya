@@ -1,5 +1,17 @@
 import "../css/Dashboard.css";
+import { useNavigate } from "react-router-dom";
 const OutletCard = (props) => {
+  const navigate = useNavigate();
+
+  const masukOutlet = () => {
+    navigate("/outlet", {
+      state: {
+        nama: `${props.nama}`,
+        tipe: `${props.tipe}`,
+        gambar: `${props.gambar}`,
+      },
+    });
+  };
   return (
     <>
       <div className="card shadow mx-4 mb-4 mb-1 border-0 rd-16 indexs">
@@ -14,7 +26,12 @@ const OutletCard = (props) => {
             {props.tipe}
           </p>
           <h5 className="card-text text-light">{props.nama}</h5>
-          <button type="button" className="btn btn-sm open-menu Pop-SemiBold">
+          <button
+            // onClick={() => navigate(`outlet/${props.nama.toLowerCase()}`)}
+            onClick={masukOutlet}
+            type="button"
+            className="btn btn-sm open-menu Pop-SemiBold"
+          >
             Open Menu
           </button>
         </div>

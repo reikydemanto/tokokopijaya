@@ -8,6 +8,10 @@
     max-height: 200px;
 }
 
+.white-font {
+    color: #FFFFFF;
+}
+
 .open-menu {
     position: absolute;
     right: 12px;
@@ -31,6 +35,30 @@
     align-items: center;
     gap: 8px;
     border-radius: 8px;
+}
+
+.mt-n1 {
+    margin-top: -0.35rem !important;
+}
+
+.mt-n2 {
+    margin-top: -0.5rem !important;
+}
+
+.button-outlet-big {
+    width: 100%;
+    color: #9E2A2A;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 8px;
+    background: #FFFFFF;
+}
+
+.button-outlet-big:hover {
+    color: #9E2A2A;
+    background: #FFFFFF;
 }
 
 .whatsapp {
@@ -120,6 +148,12 @@
     flex-shrink: 0;
 }
 
+.button-icon-big {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+}
+
 .button-text {
     color: #FFFFFF;
     font-weight: 600;
@@ -132,6 +166,31 @@
     position: absolute;
     opacity: 50%;
     z-index: 0;
+}
+
+.carousel {
+    width: 100%;
+    display: flex;
+    overflow-x: scroll !important;
+}
+
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.item-menu {
+    max-width: 136px;
+}
+
+.image img {
+    max-width: 136px;
 }
 
 .rd-16 {
