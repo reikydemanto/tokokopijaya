@@ -16,7 +16,6 @@ const Dashboard = () => {
     axios.get(baseUrl).then((response) => {
       setOutlet(response.data[0].payload);
     });
-    console.log(outlet);
     return () => {
       setOutlet([]);
     };

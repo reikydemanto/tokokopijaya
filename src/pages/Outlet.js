@@ -2,6 +2,8 @@ import { useLocation } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import LazyLoad from "react-lazy-load";
+import background from "../images/bg-instagram.png";
 
 const Outlet = () => {
   const location = useLocation();
@@ -17,7 +19,7 @@ const Outlet = () => {
         setMenu(response);
       });
     } else {
-      let getCategories = new Array();
+      let getCategories = [];
 
       for (let i = 0; i < menu.data[0].payload.length; i++) {
         getCategories[i] = menu.data[0].payload[i].NAMA_KATEGORI;
@@ -25,13 +27,6 @@ const Outlet = () => {
       }
     }
   }, [menu]);
-
-  const press = () => {
-    for (let i = 0; i < menu.data[0].payload.length; i++) {
-      let a = menu.data[0].payload[i].NAMA_KATEGORI.includes("Milk Based");
-      console.log(a);
-    }
-  };
 
   return (
     <>
@@ -48,11 +43,13 @@ const Outlet = () => {
                 <span className="Pop-SemiBold m-2">{location.state.nama}</span>
               </h5>
               <div className="card shadow mx-4 mb-4 mb-1 border-0 rd-16 indexs mt-3">
-                <img
-                  src={require(`../images/Outlet/${location.state.gambar}`)}
-                  className="card-img rd-16"
-                  alt={location.state.tipe + " " + location.state.gambar}
-                />
+                <LazyLoad>
+                  <img
+                    src={require(`../images/Outlet/${location.state.gambar}`)}
+                    className="card-img rd-16"
+                    alt={location.state.tipe + " " + location.state.gambar}
+                  />
+                </LazyLoad>
               </div>
               <div className="container-fluid">
                 <div className="row">
@@ -70,7 +67,11 @@ const Outlet = () => {
                     </button>
                   </div>
                   <div className="col mx-2 ms-4 p-0">
-                    <button className="btn btn button-outlet-big Pop-SemiBold mb-4 py-3 shadow">
+                    <button
+                      className="btn btn button-outlet-big Pop-SemiBold mb-4 py-3 shadow"
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"
+                    >
                       <Icon
                         icon="ic:round-delivery-dining"
                         width="36"
@@ -95,13 +96,16 @@ const Outlet = () => {
                     </h3>
                     <div className="carousel gap-2">
                       {menu.data[0].payload.map((item, index) =>
-                        item.NAMA_KATEGORI == itemParent ? (
+                        item.NAMA_KATEGORI === itemParent ? (
                           <div className="item-menu white-font" key={index}>
                             <div className="image mb-2">
-                              <img
-                                className="rd-16"
-                                src={require("../images/Menu/kopi_susu_jaya.jpg")}
-                              />
+                              <LazyLoad>
+                                <img
+                                  className="rd-16"
+                                  src={require("../images/Menu/kopi_susu_jaya.jpg")}
+                                  alt="kopi-susu-jaya"
+                                />
+                              </LazyLoad>
                             </div>
                             <p className="nama-menu text-center Pop-SemiBold mb-0">
                               {item.NAMA_MENU}
@@ -118,7 +122,68 @@ const Outlet = () => {
               ) : (
                 <h1>KOSONG</h1>
               )}
-              {/* <button onClick={press}>PRESS</button> */}
+              {/* Modal  */}
+              <div
+                class="modal fade"
+                id="exampleModal"
+                tabindex="-1"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header text-center color-font-red">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">
+                        Online Order
+                      </h1>
+                    </div>
+                    <div class="modal-body">
+                      <button
+                        onClick={() => {
+                          window.open(
+                            "https://www.instagram.com/tokokopijaya/"
+                          );
+                        }}
+                        type="button"
+                        className="btn btn button-sosmed instagram Pop-SemiBold mx-auto my-4 py-3 shadow"
+                      >
+                        <img
+                          className="button-online"
+                          src={require("../images/shopeefood.png")}
+                        />
+                      </button>
+                      <button
+                        onClick={() => {
+                          window.open(
+                            "https://www.instagram.com/tokokopijaya/"
+                          );
+                        }}
+                        type="button"
+                        className="btn btn button-sosmed instagram Pop-SemiBold mx-auto my-4 py-3 shadow"
+                      >
+                        <img
+                          className="button-online"
+                          src={require("../images/grabfood.png")}
+                        />
+                      </button>
+                      <button
+                        onClick={() => {
+                          window.open(
+                            "https://www.instagram.com/tokokopijaya/"
+                          );
+                        }}
+                        type="button"
+                        className="btn btn button-sosmed instagram Pop-SemiBold mx-auto my-4 py-3 shadow"
+                      >
+                        <img
+                          className="button-online"
+                          src={require("../images/gofood.png")}
+                        />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
