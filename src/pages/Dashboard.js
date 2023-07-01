@@ -19,7 +19,7 @@ const Dashboard = () => {
   const baseUrl = `http://localhost:3001/${searchParams.get("outlet")}`;
 
   useEffect(() => {
-    if (outlet.length == 0) {
+    if (outlet.length === 0) {
       getDataFromApi();
     } else {
       // console.log(outletPertama);

@@ -169,6 +169,7 @@ const Outlet = () => {
                         >
                           <img
                             className="button-online"
+                            alt="ShopeeFood"
                             src={require("../images/shopeefood.png")}
                           />
                         </button>
@@ -183,6 +184,7 @@ const Outlet = () => {
                         >
                           <img
                             className="button-online"
+                            alt="GrabFood"
                             src={require("../images/grabfood.png")}
                           />
                         </button>
@@ -197,6 +199,7 @@ const Outlet = () => {
                         >
                           <img
                             className="button-online"
+                            alt="GoFood"
                             src={require("../images/gofood.png")}
                           />
                         </button>
