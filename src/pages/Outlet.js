@@ -3,7 +3,6 @@ import { Icon } from "@iconify/react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import LazyLoad from "react-lazy-load";
-import background from "../images/bg-instagram.png";
 
 const Outlet = () => {
   const location = useLocation();
@@ -52,37 +51,48 @@ const Outlet = () => {
                 </LazyLoad>
               </div>
               <div className="container-fluid">
-                <div className="row">
-                  <div className="col mx-2 me-4 p-0">
-                    <button className="btn btn button-outlet-big Pop-SemiBold mb-4 py-3 shadow">
-                      <Icon
-                        icon="ic:round-location-on"
-                        width="36"
-                        height="36"
-                      />
-                      <div>
-                        <p className="wa-text mb-0 text-end">Location</p>
-                        <p className="wa-text mb-0 mt-n1 text-end">On Map</p>
-                      </div>
-                    </button>
-                  </div>
-                  <div className="col mx-2 ms-4 p-0">
-                    <button
-                      className="btn btn button-outlet-big Pop-SemiBold mb-4 py-3 shadow"
-                      data-bs-toggle="modal"
-                      data-bs-target="#exampleModal"
-                    >
-                      <Icon
-                        icon="ic:round-delivery-dining"
-                        width="36"
-                        height="36"
-                      />
-                      <div>
-                        <p className="wa-text mb-0 text-end">Online</p>
-                        <p className="wa-text mb-0 mt-n1 text-end">Order</p>
-                      </div>
-                    </button>
-                  </div>
+                <div className="row gap-3 px-4">
+                  {location.state.gmaps ? (
+                    <div className="col p-0">
+                      <button
+                        onClick={() => {
+                          window.open(location.state.gmaps);
+                        }}
+                        className="btn btn button-outlet-big Pop-SemiBold mb-4 py-3 shadow"
+                      >
+                        <Icon
+                          icon="ic:round-location-on"
+                          width="36"
+                          height="36"
+                        />
+                        <div>
+                          <p className="wa-text mb-0 text-end">Location</p>
+                          <p className="wa-text mb-0 mt-n1 text-end">On Map</p>
+                        </div>
+                      </button>
+                    </div>
+                  ) : null}
+                  {location.state.shopee ||
+                  location.state.grab ||
+                  location.state.gojek ? (
+                    <div className="col p-0">
+                      <button
+                        className="btn btn button-outlet-big Pop-SemiBold mb-4 py-3 shadow"
+                        data-bs-toggle="modal"
+                        data-bs-target="#exampleModal"
+                      >
+                        <Icon
+                          icon="ic:round-delivery-dining"
+                          width="36"
+                          height="36"
+                        />
+                        <div>
+                          <p className="wa-text mb-0 text-end">Online</p>
+                          <p className="wa-text mb-0 mt-n1 text-end">Order</p>
+                        </div>
+                      </button>
+                    </div>
+                  ) : null}
                 </div>
               </div>
               {categories ? (
@@ -91,7 +101,7 @@ const Outlet = () => {
                     className="container-fluid pe-4 ps-0 mb-4"
                     key={indexParent}
                   >
-                    <h3 className="Pop-SemiBold white-font mb-2">
+                    <h3 className="Pop-SemiBold white-font mb-2 wrap-text">
                       {itemParent}
                     </h3>
                     <div className="carousel gap-2">
@@ -100,11 +110,19 @@ const Outlet = () => {
                           <div className="item-menu white-font" key={index}>
                             <div className="image mb-2">
                               <LazyLoad>
-                                <img
-                                  className="rd-16"
-                                  src={require("../images/Menu/kopi_susu_jaya.jpg")}
-                                  alt="kopi-susu-jaya"
-                                />
+                                {item.GAMBAR ? (
+                                  <img
+                                    className="rd-16"
+                                    src={require(`../images/Menu/${item.GAMBAR}`)}
+                                    alt="kopi-susu-jaya"
+                                  />
+                                ) : (
+                                  <img
+                                    className="rd-16"
+                                    src="https://placeholder.com/200"
+                                    alt="kopi-susu-jaya"
+                                  />
+                                )}
                               </LazyLoad>
                             </div>
                             <p className="nama-menu text-center Pop-SemiBold mb-0">
@@ -122,64 +140,67 @@ const Outlet = () => {
               ) : (
                 <h1>KOSONG</h1>
               )}
+              <div className="footer my-5">
+                <p>©copyright @tokokopijaya</p>
+              </div>
               {/* Modal  */}
               <div
-                class="modal fade"
+                className="modal fade"
                 id="exampleModal"
-                tabindex="-1"
+                tabIndex="-1"
                 aria-labelledby="exampleModalLabel"
                 aria-hidden="true"
               >
-                <div class="modal-dialog modal-dialog-centered">
-                  <div class="modal-content">
-                    <div class="modal-header text-center color-font-red">
-                      <h1 class="modal-title fs-5" id="exampleModalLabel">
+                <div className="modal-dialog modal-dialog-centered">
+                  <div className="modal-content">
+                    <div className="modal-header text-center color-font-red">
+                      <h1 className="modal-title fs-5" id="exampleModalLabel">
                         Online Order
                       </h1>
                     </div>
-                    <div class="modal-body">
-                      <button
-                        onClick={() => {
-                          window.open(
-                            "https://www.instagram.com/tokokopijaya/"
-                          );
-                        }}
-                        type="button"
-                        className="btn btn button-sosmed instagram Pop-SemiBold mx-auto my-4 py-3 shadow"
-                      >
-                        <img
-                          className="button-online"
-                          src={require("../images/shopeefood.png")}
-                        />
-                      </button>
-                      <button
-                        onClick={() => {
-                          window.open(
-                            "https://www.instagram.com/tokokopijaya/"
-                          );
-                        }}
-                        type="button"
-                        className="btn btn button-sosmed instagram Pop-SemiBold mx-auto my-4 py-3 shadow"
-                      >
-                        <img
-                          className="button-online"
-                          src={require("../images/grabfood.png")}
-                        />
-                      </button>
-                      <button
-                        onClick={() => {
-                          window.open(
-                            "https://www.instagram.com/tokokopijaya/"
-                          );
-                        }}
-                        type="button"
-                        className="btn btn button-sosmed instagram Pop-SemiBold mx-auto my-4 py-3 shadow"
-                      >
-                        <img
-                          className="button-online"
-                          src={require("../images/gofood.png")}
-                        />
-                      </button>
+                    <div className="modal-body">
+                      {location.state.shopee ? (
+                        <button
+                          onClick={() => {
+                            window.open(location.state.shopee);
+                          }}
+                          type="button"
+                          className="btn btn button-sosmed instagram Pop-SemiBold mx-auto my-4 py-3 shadow"
+                        >
+                          <img
+                            className="button-online"
+                            src={require("../images/shopeefood.png")}
+                          />
+                        </button>
+                      ) : null}
+                      {location.state.grab ? (
+                        <button
+                          onClick={() => {
+                            window.open(location.state.grab);
+                          }}
+                          type="button"
+                          className="btn btn button-sosmed instagram Pop-SemiBold mx-auto my-4 py-3 shadow"
+                        >
+                          <img
+                            className="button-online"
+                            src={require("../images/grabfood.png")}
+                          />
+                        </button>
+                      ) : null}
+                      {location.state.gojek ? (
+                        <button
+                          onClick={() => {
+                            window.open(location.state.gojek);
+                          }}
+                          type="button"
+                          className="btn btn button-sosmed instagram Pop-SemiBold mx-auto my-4 py-3 shadow"
+                        >
+                          <img
+                            className="button-online"
+                            src={require("../images/gofood.png")}
+                          />
+                        </button>
+                      ) : null}
                     </div>
                   </div>
                 </div>

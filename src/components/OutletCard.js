@@ -9,6 +9,10 @@ const OutletCard = (props) => {
         nama: `${props.nama}`,
         tipe: `${props.tipe}`,
         gambar: `${props.gambar}`,
+        shopee: `${props.shopee}`,
+        grab: `${props.grab}`,
+        gojek: `${props.gojek}`,
+        gmaps: `${props.gmaps}`,
       },
     });
   };
@@ -27,7 +31,6 @@ const OutletCard = (props) => {
           </p>
           <h5 className="card-text text-light">{props.nama}</h5>
           <button
-            // onClick={() => navigate(`outlet/${props.nama.toLowerCase()}`)}
             onClick={masukOutlet}
             type="button"
             className="btn btn-sm open-menu Pop-SemiBold"
